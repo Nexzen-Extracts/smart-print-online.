@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Find Printer Driver</title>
+
+<script src="//code.jivosite.com/widget/CXmX6RkZyD" async></script>
+<link rel="icon" type="image/png" href="./fav.png">
+
+<style>
+body { 
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.section { 
+    display: flex; 
+    padding: 20px 0; 
+    align-items: center;      
+}
+.left { 
+    width: 50%;
+    margin-left: 40px; 
+}
+.right { 
+    width: 50%; 
+    text-align: center; 
+}
+img { 
+    width: 550px; 
+    max-width: 100%; 
+    height: auto;
+}
+
+/* Dropdown styling */
+select {
+    padding: 12px;
+    font-size: 16px;
+    width: 60%;
+}
+
+button { 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    display: block; 
+    margin-top: 10px;
+    background-color: blue;   
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+    .section { 
+        flex-direction: column;
+        padding: 20px;
+    }
+    .left, .right {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    select, button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="section">
+    <div class="left">
+        <h1>We're here to help you set up your printer</h1>
+        <p>Let's connect your printer to a Wi-Fi or wired network or to a computer using a USB cable.</p>
+    </div>
+
+    <div class="right" style="max-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <img src="/printer-setup/image/Printer_Setup_Landing.webp">
+    </div>
+</div>
+
+<!-- FORM -->
+<div class="section" style="background-color:rgb(227, 231, 231);">
+  <div class="left">
+
+    <label style="display:block;margin-bottom:12px;font-size:18px;">
+      <input type="radio" name="printer"> Unpack, Setup New Printer
+    </label>
+
+    <label style="display:block;margin-bottom:18px;font-size:18px;">
+      <input type="radio" name="printer"> Troubleshoot printer issues
+    </label>
+
+    <p style="font-size:18px;margin-bottom:10px;">
+      Select your printer brand
+    </p>
+
+    <!-- ONLY DROPDOWN -->
+    <form onsubmit="return redirectBrand();">
+
+      <select id="brandSelect" required>
+        <option value="">Select Brand</option>
+        <option value="hp">HP</option>
+        <option value="canon">Canon</option>
+        <option value="epson">Epson</option>
+        <option value="brother">Brother</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+
+  </div>
+
+  <div class="right" style="max-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+    <img src="/printer-setup/image/printer-1.jpg">
+  </div>
+</div>
+
+<!-- NOTICE -->
+<div id="noticeBox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;width:92%;max-width:420px;padding:26px 30px;border-radius:10px;">
+    
+    <h3>Selection Required</h3>
+
+    <p id="noticeMsg">Please select a printer brand.</p>
+
+    <div style="text-align:right;">
+      <button onclick="closeNotice()">OK</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+function redirectBrand() {
+
+  const brand = document.getElementById("brandSelect").value;
+
+  if (!brand) {
+    document.getElementById("noticeBox").style.display = "flex";
+    return false;
+  }
+
+  if (brand === "hp") {
+    window.location.href = "/printer-setup/hp/install.html";
+  } 
+  else if (brand === "canon") {
+    window.location.href = "/printer-setup/canon/install.html";
+  } 
+  else if (brand === "epson") {
+    window.location.href = "/printer-setup/epson/install.html";
+  } 
+  else if (brand === "brother") {
+    window.location.href = "/printer-setup/brother/install.html";
+  }
+
+  return false;
+}
+
+function closeNotice() {
+  document.getElementById("noticeBox").style.display = "none";
+}
+</script>
+
+<!-- BOTTOM -->
+<div class="section">
+    <div class="left">
+        <p>We’ve made it easy to download printer software to set up your printer.</p>
+    </div>
+</div>
+
+</body>
+</html>
